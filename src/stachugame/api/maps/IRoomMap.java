@@ -1,5 +1,5 @@
 package stachugame.api.maps;
 
-public interface IGameMap {
+public interface IRoomMap {
     //@TODO
 }

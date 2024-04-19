@@ -1,11 +1,11 @@
 package stachugame;
 
-import stachugame.api.maps.IGameMap;
+import stachugame.api.maps.IRoomMap;
 import stachugame.implementation.entities.Player;
 
 public class Game {
 	private Player player;
-	private IGameMap map;
+	private IRoomMap map;
 	private int level;
 	private static Game instance;
 
@@ -20,7 +20,7 @@ public class Game {
 	  return instance;
 	}
 	/**
-	 * Funkcja ³aduje nastêpny poziom do gry
+	 * Funkcja ï¿½aduje nastï¿½pny poziom do gry
 	 */
 	public void loadNextLevel() {
 		
@@ -32,7 +32,7 @@ public class Game {
 		
 	}
 	/**
-	 *  Funkcja pozwala grze toczyæ siê krok po kroku
+	 *  Funkcja pozwala grze toczyï¿½ siï¿½ krok po kroku
 	 */
 	private void progressGameLoop() {
 		
