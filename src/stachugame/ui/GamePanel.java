@@ -9,13 +9,15 @@ import java.io.IOException;
 
 public class GamePanel extends JPanel {
 
+    MapCanvas mapCanvas;
+
     public GamePanel() throws IOException {
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         GridBagConstraints c;
 
 //        setTitle("Magnaci i Czarodzieje - Legenda Jaboli");
-        setSize(800, 600);
+        setSize(710, 600);
         setPreferredSize(getSize());
 //        setResizable(false);
 //        setLayout(new FlowLayout());
@@ -34,19 +36,21 @@ public class GamePanel extends JPanel {
         pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         Dimension panePD = pane.getPreferredSize();
-        pane.setBounds(0, 0, panePD.width, panePD.height);
+        pane.setBounds(10, 5, panePD.width, panePD.height);
 
         add(pane);
 
         //Dodanie tła mapy.
         JPanel p = new JPanel();
-        p.setSize(200, 200);
-        p.setMaximumSize(p.getSize());
-        p.setMinimumSize(p.getSize());
-        p.add(new MapCanvas(ImageIO.read(getClass().getResource("/grid.png"))));
+
+        mapCanvas = new MapCanvas(ImageIO.read(getClass().getResource("/grid.png")));
+        p.add(mapCanvas);
         Dimension pPD = p.getPreferredSize();
+        System.out.println(pPD.height);
         add(p);
-        p.setBounds(panePD.width+5, 0, p.getWidth(), p.getHeight());
+        p.setBounds(panePD.width+20, 0, (int) pPD.getWidth(), (int) pPD.getHeight());
+
+        System.out.println(panePD.width + 10+20 + pPD.width+5);
 
         setVisible(true);
 
