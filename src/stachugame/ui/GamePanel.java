@@ -25,6 +25,7 @@ public class GamePanel extends JPanel {
         area.setBackground(Color.BLACK);
         area.setForeground(Color.WHITE);
         area.setLineWrap(true);
+        area.setEditable(false);
         area.setFont(Main.monocraft_13);
 
 
@@ -44,6 +45,14 @@ public class GamePanel extends JPanel {
         Dimension mapPanelPreferredSize = mapPanel.getPreferredSize();
         add(mapPanel);
         mapPanel.setBounds(outputPanePreferredSize.width+20, 0, mapPanelPreferredSize.width, mapPanelPreferredSize.height);
+
+        //Dodanie miejsca na wysyłanie poleceń
+        JTextField inputField = new JTextField();
+        inputField.setBounds(10, 5+outputPanePreferredSize.height, outputPanePreferredSize.width, inputField.getPreferredSize().height);
+        inputField.setForeground(Color.WHITE);
+        inputField.setBackground(Color.BLACK);
+        inputField.setFont(Main.monocraft_13);
+        add(inputField);
 
         setVisible(true);
 
