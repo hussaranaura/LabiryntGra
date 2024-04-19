@@ -11,16 +11,12 @@ public class GamePanel extends JPanel {
 
     MapCanvas mapCanvas;
 
-    public GamePanel() throws IOException {
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-        GridBagConstraints c;
 
-//        setTitle("Magnaci i Czarodzieje - Legenda Jaboli");
+    public GamePanel() throws IOException {
+        setLayout(null);
+
         setSize(710, 600);
         setPreferredSize(getSize());
-//        setResizable(false);
-//        setLayout(new FlowLayout());
         setBorder(BorderFactory.createEtchedBorder());
 
 
@@ -32,28 +28,24 @@ public class GamePanel extends JPanel {
         area.setFont(Main.monocraft_13);
 
 
-        JScrollPane pane = new JScrollPane(area);
-        pane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        Dimension panePD = pane.getPreferredSize();
-        pane.setBounds(10, 5, panePD.width, panePD.height);
+        JScrollPane outputPane = new JScrollPane(area);
+        outputPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        outputPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        Dimension outputPanePreferredSize = outputPane.getPreferredSize();
+        outputPane.setBounds(10, 5, outputPanePreferredSize.width, outputPanePreferredSize.height);
 
-        add(pane);
+        add(outputPane);
 
         //Dodanie tła mapy.
-        JPanel p = new JPanel();
+        JPanel mapPanel = new JPanel();
 
         mapCanvas = new MapCanvas(ImageIO.read(getClass().getResource("/grid.png")));
-        p.add(mapCanvas);
-        Dimension pPD = p.getPreferredSize();
-        System.out.println(pPD.height);
-        add(p);
-        p.setBounds(panePD.width+20, 0, (int) pPD.getWidth(), (int) pPD.getHeight());
-
-        System.out.println(panePD.width + 10+20 + pPD.width+5);
+        mapPanel.add(mapCanvas);
+        Dimension mapPanelPreferredSize = mapPanel.getPreferredSize();
+        add(mapPanel);
+        mapPanel.setBounds(outputPanePreferredSize.width+20, 0, mapPanelPreferredSize.width, mapPanelPreferredSize.height);
 
         setVisible(true);
 
-        System.out.println(area.getSize());
     }
 }
