@@ -1,7 +1,7 @@
 package stachugame;
 
 import stachugame.api.maps.IRoomMap;
-import stachugame.implementation.entities.Player;
+import stachugame.implementation.entities.player.Player;
 
 public class Game {
 	private Player player;
