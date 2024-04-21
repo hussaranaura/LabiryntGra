@@ -6,15 +6,15 @@ import stachugame.api.items.IItem;
 
 public interface IEntity {
 	/**
-	 * Metoda zwracajaca aktualn¹ ilosc zycia
+	 * Metoda zwracajaca aktualnï¿½ ilosc zycia
 	 * @return ilosc zycia
 	 */
-	int GetHealth ();
+	int getHealth ();
 	/**
 	 * Metoda zwracajaca maksymalna ilosc zycia
 	 * @return maksymalna ilosc zycia
 	 */
-	int GetMaxHealth();
+	int getMaxHealth();
 	/**
 	 * Metoda zwracajaca ekwipunek postaci
 	 * @return (Set) itemy
