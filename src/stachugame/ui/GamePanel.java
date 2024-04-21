@@ -60,10 +60,15 @@ public class GamePanel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    String text = inputField.getText();
-                    inputField.setText(null);
+                    SwingUtilities.invokeLater(()->{
+                        String text = inputField.getText();
+                        inputField.setText(null);
 
-                    area.append(text+"\n");
+                        IGame.getInstance().processCommand(text);
+
+                        area.append("> "+text+"\n");
+
+                    });
                 }
             }
         });
