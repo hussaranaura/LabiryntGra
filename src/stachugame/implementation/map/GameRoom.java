@@ -32,4 +32,19 @@ public class GameRoom implements IRoom {
 		// TODO Auto-generated method stub
 		return this.exits.getOrDefault(dir, false);
 	}
+	@Override
+	public boolean wasFound() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public void setFound() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void openExit(Direction dir) {
+		// TODO Auto-generated method stub
+		
+	}
 }

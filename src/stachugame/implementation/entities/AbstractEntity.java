@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import stachugame.api.entities.IEntity;
+import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
 import stachugame.api.items.IItem;
 
@@ -28,5 +29,15 @@ public abstract class AbstractEntity implements IEntity {
 
 	@Override
 	public abstract void update();
-
+	public IRoom getCurrentRoom() {
+		return currentRoom;
+	}
+	public String getName() {
+		return null;
+	}
+	public void move(Direction dir) {
+	}
+	public void move(IRoom room) {
+		
+	}
 }
