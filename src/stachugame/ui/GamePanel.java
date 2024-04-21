@@ -1,6 +1,7 @@
 package stachugame.ui;
 
 import stachugame.Main;
+import stachugame.api.IGame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -28,6 +29,8 @@ public class GamePanel extends JPanel {
         area.setLineWrap(true);
         area.setEditable(false);
         area.setFont(Main.monocraft_13);
+
+        IGame.getInstance().setOut(new JTextAreaOutputStream(area));
 
 
         JScrollPane outputPane = new JScrollPane(area);
