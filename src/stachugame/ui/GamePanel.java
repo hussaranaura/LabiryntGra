@@ -5,12 +5,12 @@ import stachugame.Main;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class GamePanel extends JPanel {
-
     MapCanvas mapCanvas;
-
 
     public GamePanel() throws IOException {
         setLayout(null);
@@ -22,6 +22,7 @@ public class GamePanel extends JPanel {
 
         //Dodawanie widoku konsoli
         JTextArea area = new JTextArea(20, 50);
+        area.setText("test 123\n\nExample of the game view lol");
         area.setBackground(Color.BLACK);
         area.setForeground(Color.WHITE);
         area.setLineWrap(true);
@@ -53,6 +54,17 @@ public class GamePanel extends JPanel {
         inputField.setBackground(Color.BLACK);
         inputField.setFont(Main.monocraft_13);
         add(inputField);
+        inputField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    String text = inputField.getText();
+                    inputField.setText(null);
+
+                    area.append(text+"\n");
+                }
+            }
+        });
 
         setVisible(true);
 
