@@ -11,6 +11,8 @@ public interface IGame {
         return instance;
     }
 
+    GameState getState();
+
     /**
      * Zmienia wyjście tekstu na podany poniżej
      * @param os OutputStream

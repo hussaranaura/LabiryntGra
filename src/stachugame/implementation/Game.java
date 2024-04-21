@@ -1,5 +1,6 @@
 package stachugame.implementation;
 
+import stachugame.api.GameState;
 import stachugame.api.IGame;
 import stachugame.api.maps.IRoomMap;
 import stachugame.implementation.entities.player.Player;
@@ -14,8 +15,16 @@ public class Game implements IGame {
 
 	private PrintStream out;
 
+	private GameState state;
+
 	public Game(){
 		out = System.out;
+		state = GameState.NOT_INITIALIZED;
+	}
+
+	@Override
+	public GameState getState(){
+		return state;
 	}
 
 	@Override
