@@ -31,5 +31,9 @@ public interface IGame {
      */
     void progressGameLoop();
 
-
+    /**
+     * Przetwarza polecenie przesłane do gry
+     * @param cmd polecenie jako String
+     */
+    void processCommand(String cmd);
 }

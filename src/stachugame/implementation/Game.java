@@ -11,7 +11,6 @@ public class Game implements IGame {
 	private Player player;
 	private IRoomMap map;
 	private int level;
-	private static Game instance;
 
 	private PrintStream out;
 
@@ -36,6 +35,11 @@ public class Game implements IGame {
 
 	@Override
 	public void progressGameLoop() {
+
+	}
+
+	@Override
+	public void processCommand(String cmd) {
 
 	}
 }
