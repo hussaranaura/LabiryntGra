@@ -1,9 +1,6 @@
 const canvas = document.getElementById('map_canvas');
 const ctx = canvas.getContext("2d");
 
-canvas.width = background.width;
-canvas.height = background.height
-
 canvas.addEventListener("click", (event) =>{
     //console.log(getPosition(event))
     SelectedPos = getMapPosition(event)
@@ -19,7 +16,7 @@ canvas.addEventListener("contextmenu", (event) => {
     rooms[finishPos.x][finishPos.y] = new Room(false, false, true, false);
     return false;
 })
-background.addEventListener("load", redraw);
+background.onload = redraw;
 
 
 function drawRooms(){
@@ -53,6 +50,10 @@ function drawRooms(){
 }
 
 function redraw(){
+
+    canvas.width = background.width;
+    canvas.height = background.height
+
     ctx.reset()
 
     ctx.drawImage(background, 0, 0)
