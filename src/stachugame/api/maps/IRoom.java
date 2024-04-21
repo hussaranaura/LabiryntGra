@@ -21,4 +21,19 @@ public interface IRoom {
 	 * @return czy drzwi w danym kierunku są otwarte
 	 */
 	boolean isExitOpen(Direction dir);
+	/**
+	 * Metoda zwracajaca informacje o tym czy pokoj zostal juz odkryty
+	 * @return 	false - jesli nei zostal odkryty
+	 * 			true - jesli zostal odkryty
+	 */
+	boolean wasFound();
+	/**
+	 * Metoda ustawiajaca informacje o tym ze pokoj zostal znaleziony
+	 */
+	void setFound();
+	/**
+	 * Metoda otwierajaca wejscie w danym kierunku
+	 * @param dir - kierunek do ktorego ma byc otwarte wejscie
+	 */
+	void openExit(Direction dir);
 }
