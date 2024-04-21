@@ -23,7 +23,6 @@ public class GamePanel extends JPanel {
 
         //Dodawanie widoku konsoli
         JTextArea area = new JTextArea(20, 50);
-        area.setText("test 123\n\nExample of the game view lol");
         area.setBackground(Color.BLACK);
         area.setForeground(Color.WHITE);
         area.setLineWrap(true);
