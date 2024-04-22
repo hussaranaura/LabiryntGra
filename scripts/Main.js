@@ -40,8 +40,51 @@ function showCreator(isCreated){
     document.getElementById("remove").style.display = (!isCreated ? "none" : "initial");
 }
 
+function getOffsetByDirId(id){
+    offset = {x: 0, y:0}
+    switch(id){
+        case 0:
+            offset.y -= 1;
+            break;
+        case 1:
+            offset.y += 1;
+            break;
+        case 2:
+            offset.x += 1;
+            break;
+        case 3:
+            offset.x -= 1;
+    }
+    return offset;
+}
+
 function create(){
-    rooms[SelectedPos.x][SelectedPos.y] = new Room(false, false, false, false);
+    let newRoom = new Room(false, false, false, false);
+    rooms[SelectedPos.x][SelectedPos.y] = newRoom;
+
+
+    for(let i = 0; i < 4; i++){
+        let offset = getOffsetByDirId(i);
+        let surroundingRoom = getRoom(SelectedPos.x+offset.x, SelectedPos.y+offset.y); //pokój obok
+
+        if(!surroundingRoom){
+            continue;
+        }
+
+        if(i==0 && surroundingRoom.exits[1]){ //Jeżeli pokoju z góry ma otwarte dolne drzwi
+            newRoom.exits[i] = true; //otwórz górę
+        }
+        if(i==1 && surroundingRoom.exits[0]){ //Jeżeli pokoju z dołu ma otwarte górne drzwi
+            newRoom.exits[i] = true; //otwórz dolne
+        }
+        if(i==2 && surroundingRoom.exits[3]){ //Jeżeli pokoju z prawej ma otwarte lewe drzwi
+            newRoom.exits[i] = true; //otwórz prawo
+        }
+        if(i==3 && surroundingRoom.exits[2]){ //Jeżeli pokoju z góry ma otwarte dolne drzwi
+            newRoom.exits[i] = true; //otwórz górę
+        }
+    }
+
     updateEditor();
     redraw();
 }
@@ -53,6 +96,12 @@ function remove(){
 
 function doesRoomExist(pos){
     return (pos.x > -1 && pos.y > -1) && rooms[pos.x][pos.y];
+}
+function getRoom(x, y){
+    let pos = {x:x, y:y};
+    if (pos.x > -1 && pos.y > -1)
+        return rooms[pos.x][pos.y];
+    return null;
 }
 
 function closeRoomsOpenToVoid(){
