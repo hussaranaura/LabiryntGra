@@ -16,7 +16,6 @@ canvas.addEventListener("contextmenu", (event) => {
     rooms[finishPos.x][finishPos.y] = new Room(false, false, true, false);
     return false;
 })
-background.onload = redraw;
 
 
 function drawRooms(){
@@ -67,3 +66,6 @@ function redraw(){
 
 
 
+
+redraw();
+background.onload = redraw;
