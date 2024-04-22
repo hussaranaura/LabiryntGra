@@ -12,9 +12,13 @@ import stachugame.api.maps.IRoom;
 public class GameRoom implements IRoom {
 	private HashSet<IEntity> entities;
 	private HashSet<IItem> items;
-	private HashMap<Direction, Boolean> exits;
+	private final HashMap<Direction, Boolean> exits;
 	public GameRoom(boolean northOpen, boolean eastOpen, boolean southOpen, boolean westOpen) {
 		this.exits = new HashMap<>();
+		this.exits.put(Direction.NORTH, northOpen);
+		this.exits.put(Direction.EAST, eastOpen);
+		this.exits.put(Direction.SOUTH, southOpen);
+		this.exits.put(Direction.WEST, westOpen);
 	}
 	private boolean wasFound = false;
 	@Override
@@ -24,12 +28,10 @@ public class GameRoom implements IRoom {
 	}
 	@Override
 	public Set<IItem> getItems() {
-		// TODO Auto-generated method stub
 		return items;
 	}
 	@Override
 	public boolean isExitOpen(Direction dir) {
-		// TODO Auto-generated method stub
 		return this.exits.getOrDefault(dir, false);
 	}
 	@Override
@@ -40,10 +42,5 @@ public class GameRoom implements IRoom {
 	public void setFound() {
 		if(wasFound == true) wasFound = false;
 		else wasFound = true;
-	}
-	@Override
-	public void openExit(Direction dir) {
-		this.exits.put(dir, true);
-		
 	}
 }

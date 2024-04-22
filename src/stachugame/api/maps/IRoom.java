@@ -31,9 +31,5 @@ public interface IRoom {
 	 * Metoda ustawiajaca informacje o tym ze pokoj zostal znaleziony
 	 */
 	void setFound();
-	/**
-	 * Metoda otwierajaca wejscie w danym kierunku
-	 * @param dir - kierunek do ktorego ma byc otwarte wejscie
-	 */
-	void openExit(Direction dir);
+
 }
