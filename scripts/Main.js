@@ -31,7 +31,18 @@ function changeDoor(checkboxElement){
     if(!room){
         return;
     }
-    room.exits[checkboxElement.name] = checkboxElement.checked;
+
+    let id = parseInt(checkboxElement.name);
+
+    let pos = getOffsetByDirId(id)
+    pos.x += SelectedPos.x;
+    pos.y += SelectedPos.y;
+
+    if(doesRoomExist(pos)){
+        getRoom(pos.x, pos.y).exits[getOppositeDir(id)] = checkboxElement.checked;
+    }
+
+    room.exits[id] = checkboxElement.checked;
     redraw();
 }
 
