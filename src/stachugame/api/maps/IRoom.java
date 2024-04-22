@@ -20,7 +20,15 @@ public interface IRoom {
 	 * funkcja zwraca informacje czy dane wyjście jest otwarte
 	 * @return czy drzwi w danym kierunku są otwarte
 	 */
-	boolean isExitOpen(Direction dir);
+	boolean isNextRoomOpen(Direction dir);
+
+	/**
+	 * Zwraca sąsiedni pokój znajdujący się w podanym kierunku
+	 * @param dir Kierunek wyjścia
+	 * @return Sąsiedni pokój
+	 */
+	IRoom getNextRoom(Direction dir);
+
 	/**
 	 * Metoda zwracajaca informacje o tym czy pokoj zostal juz odkryty
 	 * @return 	false - jesli nei zostal odkryty

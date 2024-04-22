@@ -44,7 +44,7 @@ public class MapCanvas extends Canvas {
 //
 //                //g.fillRect(x * 20, y * 20, 20, 20);
 //                for(Direction dir : Direction.values()){
-//                    if(!room.isExitOpen(dir)){
+//                    if(!room.isNextRoomOpen(dir)){
 //                        if(dir == Direction.NORTH)
 //                            g.drawLine(x*20, y*20, (x+1)*20, y*20);
 //
