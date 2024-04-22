@@ -58,6 +58,19 @@ function getOffsetByDirId(id){
     return offset;
 }
 
+function getOppositeDir(dir){
+    switch(dir){
+        case 0:
+            return 1;
+        case 1:
+            return 0;
+        case 2: 
+            return 3;
+        case 3:
+            return 2;
+    }
+}
+
 function create(){
     let newRoom = new Room(false, false, false, false);
     rooms[SelectedPos.x][SelectedPos.y] = newRoom;
@@ -116,30 +129,14 @@ function closeRoomsOpenToVoid(){
 
             for(let i = 0; i < 4; i++){
                 if(room.exits[i]){
-                    if(i == 0){ //Jeżeli góra otwarta
-                        if(!doesRoomExist({x: x, y: y-1})){
-                            room.exits[i] = false;
-                            closedSomeRooms = true;
-                        }
+                    let pos = getOffsetByDirId(i);
+                    pos.x += x;
+                    pos.y += y;
+                    if(!doesRoomExist(pos) || !getRoom(pos.x, pos.y).exits[getOppositeDir(i)]){
+                        room.exits[i] = false;
+                        closedSomeRooms = true;
                     }
-                    if(i == 2){ //Jeżeli prawo otwarte
-                        if(!doesRoomExist({x: x+1, y: y})){
-                            room.exits[i] = false;
-                            closedSomeRooms = true;
-                        }
-                    }
-                    if(i == 3){ //Jeżeli lewo otwarte
-                        if(!doesRoomExist({x: x-1, y: y})){
-                            room.exits[i] = false;
-                            closedSomeRooms = true;
-                        } 
-                    }
-                    if(i == 1){ //Jeżeli dół otwarty
-                        if(!doesRoomExist({x: x, y: y+1})){
-                            room.exits[i] = false;
-                            closedSomeRooms = true;
-                        } 
-                    }
+                  
                 }
             }
         }
