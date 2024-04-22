@@ -229,8 +229,8 @@ function save(){
         redraw();
         return;
     }
-    
-    alert("Kod mapy:\n"+mapCode);
+    navigator.clipboard.writeText(mapCode);
+    alert("Kod mapy (skopiowany do schowka):\n"+mapCode);
 }
 
 function setFinish(){
