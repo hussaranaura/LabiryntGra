@@ -154,6 +154,39 @@ function closeRoomsOpenToVoid(){
     return closedSomeRooms;
 }
 
+function load(){
+    let code = prompt("Podaj kod:").split("|");
+
+    if(code.length != 3)
+        return;
+    if(code[0].length != 2)
+        return;
+    if(code[1].length != 2)
+        return;
+    if(code[2].length != 100)
+        return;
+
+    starterPos.x = parseInt(code[0].substring(0, 1));
+    starterPos.y = parseInt(code[0].substring(1, 2));
+
+    finishPos.x = parseInt(code[1].substring(0, 1));
+    finishPos.y = parseInt(code[1].substring(1, 2));
+
+    for(let i = 0; i < 100; i++){
+        let x = Math.floor(i/10);
+        let y = i%10;
+
+        let mask = parseInt(code[2].substring(i, i+1), 16);
+        if(mask == 0){
+            rooms[x][y] = null;
+            continue;
+        }
+
+        rooms[x][y] = new Room((mask & 1) > 0, (mask & 4) > 0, (mask & 2) > 0, (mask & 8) > 0);
+    }
+    redraw();
+}
+
 function save(){
     let errorText = "";
     let err = false;
