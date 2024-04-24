@@ -7,6 +7,22 @@ import stachugame.api.items.IItem;
 
 public interface IRoom {
 	/**
+	 * funkcja do poruszania się między pokojami
+	 * @param entity postac do poruszenia
+	 * @param dir kierunek do poruszenia
+	 */
+	void moveEntity(IEntity entity, Direction dir);
+	/**
+	 * funkcja do dodania postaci
+	 * @param entity postac do dodania
+	 */
+	void addEntity(IEntity entity);
+	/**
+	 * funkcja do usuniecia postaci
+	 * @param entity postac do usuniecia
+	 */
+	void removeEntity(IEntity entity);
+	/**
 	 * funkcja zwraca obiekt mapy która przechowuje ten pokój
 	 * @return obiekt mapy 
 	 */

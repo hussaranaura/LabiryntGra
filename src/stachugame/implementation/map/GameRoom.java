@@ -54,7 +54,28 @@ public class GameRoom implements IRoom {
 	}
 	@Override
 	public IRoomMap getParent() {
-		// TODO Auto-generated method stub
 		return parent;
+	}
+	@Override
+	public void moveEntity(IEntity entity, Direction dir) {
+		if(entities.contains(entity) ==false)
+			return;
+		IRoom nextRoom=exits.get(dir);
+		if(nextRoom==null)
+			return;
+		entities.remove(entity);
+		nextRoom.addEntity(entity);
+	}
+	@Override
+	public void addEntity(IEntity entity) {
+		parent.getEntityList().add(entity);
+		entities.add(entity);
+		entity.setCurrentRoom(this);
+	}
+	@Override
+	public void removeEntity(IEntity entity) {
+		parent.getEntityList().remove(entity);
+		entities.remove(entity);
+		entity.setCurrentRoom(null);
 	}
 }
