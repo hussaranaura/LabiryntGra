@@ -1,12 +1,16 @@
 package stachugame.api.maps;
 
+import stachugame.api.entities.IEntity;
+
 import java.awt.*;
+import java.util.Set;
 
 public interface IRoomMap {
     /**
      *  funkcja ma przejść po wszystkich postaciach na mapie i uruchomić funkcję update
      */
-	void udpateObjects();
+	void updateObjects();
+	Set<IEntity> getEntityList();
 	/**
 	 * funkcja zwraca pokoje na mapie 
 	 * @return tablica pokoji o rozmiarach 10 x 10

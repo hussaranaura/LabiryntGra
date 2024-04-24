@@ -3,6 +3,7 @@ package stachugame.implementation.map;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.HashSet;
+import java.util.Set;
 
 import stachugame.api.entities.IEntity;
 import stachugame.api.maps.IRoom;
@@ -21,8 +22,13 @@ public class GameMap implements IRoomMap {
 	}
 
 	@Override
-	public void udpateObjects() {
+	public void updateObjects() {
 
+	}
+
+	@Override
+	public Set<IEntity> getEntityList() {
+		return entities;
 	}
 
 	@Override
