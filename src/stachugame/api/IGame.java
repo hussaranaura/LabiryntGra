@@ -1,5 +1,6 @@
 package stachugame.api;
 
+import stachugame.api.maps.IRoomMap;
 import stachugame.implementation.Game;
 
 import java.io.OutputStream;
@@ -12,6 +13,11 @@ public interface IGame {
     }
 
     GameState getState();
+    /**
+     *  funkcja zwraca obiekt obecnej mapy w grze
+     * @return obiekt mapy 
+     */
+    IRoomMap getCurrentMap();
 
     /**
      * Zmienia wyjście tekstu na podany poniżej

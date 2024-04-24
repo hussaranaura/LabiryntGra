@@ -51,4 +51,10 @@ public class Game implements IGame {
 	public void processCommand(String cmd) {
 
 	}
+
+	@Override
+	public IRoomMap getCurrentMap() {
+		// TODO Auto-generated method stub
+		return map;
+	}
 }
