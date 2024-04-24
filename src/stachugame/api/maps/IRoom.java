@@ -7,6 +7,11 @@ import stachugame.api.items.IItem;
 
 public interface IRoom {
 	/**
+	 * funkcja zwraca obiekt mapy która przechowuje ten pokój
+	 * @return obiekt mapy 
+	 */
+	IRoomMap getParent();
+	/**
 	 * funkcja zwraca wszystkie postacie w pokoju
 	 * @return zbiór postaci w pokoju
 	 */

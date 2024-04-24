@@ -9,13 +9,16 @@ import stachugame.api.entities.IEntity;
 import stachugame.api.items.IItem;
 import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
+import stachugame.api.maps.IRoomMap;
 
 public class GameRoom implements IRoom {
 	private HashSet<IEntity> entities;
 	private HashSet<IItem> items;
 	private final HashMap<Direction, IRoom> exits;
-	public GameRoom() {
+	private final IRoomMap parent;
+	public GameRoom(IRoomMap parent) {
 		exits = new HashMap<>();
+		this.parent = parent;
 	}
 	private boolean wasFound = false;
 	@Override
@@ -48,5 +51,10 @@ public class GameRoom implements IRoom {
 	@Override
 	public void setFound() {
 		wasFound = !wasFound;
+	}
+	@Override
+	public IRoomMap getParent() {
+		// TODO Auto-generated method stub
+		return parent;
 	}
 }
