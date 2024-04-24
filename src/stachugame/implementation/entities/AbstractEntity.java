@@ -13,7 +13,13 @@ public abstract class AbstractEntity implements IEntity {
 	protected int currentHealth;
 	protected IRoom currentRoom;
 	protected HashSet<IItem> items;
+	protected String name;
 
+	public AbstractEntity(String name, int maxHealth) {
+		this.name=name;
+		this.maxHealth=maxHealth;
+		this.currentHealth=maxHealth;
+	}
 	@Override
 	public int getMaxHealth(){
 		return maxHealth;
@@ -33,11 +39,15 @@ public abstract class AbstractEntity implements IEntity {
 		return currentRoom;
 	}
 	public String getName() {
-		return null;
+		return name;
 	}
 	public void move(Direction dir) {
+		currentRoom.moveEntity(this, dir);
 	}
 	public void setCurrentRoom(IRoom room) {
 		this.currentRoom=room;
+	}
+	public void kill() {
+		currentRoom.removeEntity(this);
 	}
 }

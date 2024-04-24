@@ -46,4 +46,8 @@ public interface IEntity {
 	 * @param room - wybrany pokoj do ktorego ma byc przeniesiona postac
 	 */
 	void setCurrentRoom(IRoom room);
+	/**
+	 * funkcja usuwa postac z gry
+	 */
+	void kill();
 }
