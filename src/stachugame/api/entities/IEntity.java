@@ -45,5 +45,5 @@ public interface IEntity {
 	 * Metoda przenoszaca postac do wybranego pokoju
 	 * @param room - wybrany pokoj do ktorego ma byc przeniesiona postac
 	 */
-	void move(IRoom room);
+	void setCurrentRoom(IRoom room);
 }

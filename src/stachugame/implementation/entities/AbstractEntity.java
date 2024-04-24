@@ -37,7 +37,7 @@ public abstract class AbstractEntity implements IEntity {
 	}
 	public void move(Direction dir) {
 	}
-	public void move(IRoom room) {
-		
+	public void setCurrentRoom(IRoom room) {
+		this.currentRoom=room;
 	}
 }
