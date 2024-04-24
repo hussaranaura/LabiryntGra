@@ -20,41 +20,41 @@ public class MapLoaderUtil {
         int finishY = Integer.parseInt(codes[1].substring(1));
 
         IRoomMap map = new GameMap(startX, startY, finishX, finishY);
-//
-//        IRoom[][] rooms = map.getRooms();
-//        for(int i = 0; i < 100; i++){
-//            byte roomMask = Byte.parseByte(codes[2].substring(i, i+1), 16);
-//
-//            if(roomMask == 0)
-//                continue;
-//
-//            rooms[i/10][i%10] = new GameRoom();
-//        }
-//        for(int i = 0; i < 100; i++){
-//            int x = i/10;
-//            int y = i%10;
-//            IRoom room = rooms[x][y];
-//
-//            if(room == null)
-//                continue;
-//
-//            Map<Direction, IRoom> exits = ((GameRoom) room).getExits();
-//            byte roomMask = Byte.parseByte(codes[2].substring(i, i+1), 16);
-//
-//            if((roomMask & Direction.NORTH.getBitmask()) > 0){
-//                exits.put(Direction.NORTH, rooms[x][y-1]);
-//            }
-//            if((roomMask & Direction.EAST.getBitmask()) > 0){
-//                exits.put(Direction.EAST, rooms[x+1][y]);
-//            }
-//            if((roomMask & Direction.SOUTH.getBitmask()) > 0){
-//                exits.put(Direction.SOUTH, rooms[x][y+1]);
-//            }
-//            if((roomMask & Direction.WEST.getBitmask()) > 0){
-//                exits.put(Direction.WEST, rooms[x-1][y]);
-//            }
-//
-//        }
+
+        IRoom[][] rooms = map.getRooms();
+        for(int i = 0; i < 100; i++){
+            byte roomMask = Byte.parseByte(codes[2].substring(i, i+1), 16);
+
+            if(roomMask == 0)
+                continue;
+
+            rooms[i/10][i%10] = new GameRoom(map);
+        }
+        for(int i = 0; i < 100; i++){
+            int x = i/10;
+            int y = i%10;
+            IRoom room = rooms[x][y];
+
+            if(room == null)
+                continue;
+
+            Map<Direction, IRoom> exits = ((GameRoom) room).getExits();
+            byte roomMask = Byte.parseByte(codes[2].substring(i, i+1), 16);
+
+            if((roomMask & Direction.NORTH.getBitmask()) > 0){
+                exits.put(Direction.NORTH, rooms[x][y-1]);
+            }
+            if((roomMask & Direction.EAST.getBitmask()) > 0){
+                exits.put(Direction.EAST, rooms[x+1][y]);
+            }
+            if((roomMask & Direction.SOUTH.getBitmask()) > 0){
+                exits.put(Direction.SOUTH, rooms[x][y+1]);
+            }
+            if((roomMask & Direction.WEST.getBitmask()) > 0){
+                exits.put(Direction.WEST, rooms[x-1][y]);
+            }
+
+        }
 
 
 
