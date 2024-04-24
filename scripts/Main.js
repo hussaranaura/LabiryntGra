@@ -54,7 +54,7 @@ function showCreator(isCreated){
 function getOffsetByDirId(id){
     offset = {x: 0, y:0}
     switch(id){
-        case 0:
+        case 0: 
             offset.y -= 1;
             break;
         case 1:
@@ -119,12 +119,11 @@ function remove(){
 }
 
 function doesRoomExist(pos){
-    return (pos.x > -1 && pos.y > -1) && rooms[pos.x][pos.y];
+    return getRoom(pos.x, pos.y) != null;
 }
 function getRoom(x, y){
-    let pos = {x:x, y:y};
-    if (pos.x > -1 && pos.y > -1)
-        return rooms[pos.x][pos.y];
+    if (x > -1 && x < 10 && y > -1 && y < 10)
+        return rooms[x][y];
     return null;
 }
 
