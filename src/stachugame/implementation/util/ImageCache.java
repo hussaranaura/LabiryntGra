@@ -40,6 +40,6 @@ public class ImageCache {
     }
 
     public static Image get(String name){
-        return imageMap.getOrDefault(name, new BufferedImage(0, 0, 0));
+        return imageMap.get(name);
     }
 }

@@ -4,15 +4,13 @@ import stachugame.Main;
 import stachugame.api.IGame;
 import stachugame.implementation.util.ImageCache;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 
 public class GamePanel extends JPanel {
-    MapCanvas mapCanvas;
+    MapPanel mapPanel;
 
     public GamePanel() {
         setLayout(null);
@@ -42,10 +40,12 @@ public class GamePanel extends JPanel {
         add(outputPane);
 
         //Dodanie tła mapy.
-        JPanel mapPanel = new JPanel();
+        JPanel mapPanel = new MapPanel(ImageCache.get("grid"));
+        this.mapPanel = (MapPanel) mapPanel;
 
-        mapCanvas = new MapCanvas(ImageCache.get("grid"));
-        mapPanel.add(mapCanvas);
+        //mapCanvas = new MapCanvas(ImageCache.get("grid"));
+        //mapPanel.add(mapCanvas);
+        mapPanel.setPreferredSize(new Dimension(200, 200));
         Dimension mapPanelPreferredSize = mapPanel.getPreferredSize();
         add(mapPanel);
         mapPanel.setBounds(outputPanePreferredSize.width+20, 0, mapPanelPreferredSize.width, mapPanelPreferredSize.height);
@@ -66,6 +66,8 @@ public class GamePanel extends JPanel {
                         inputField.setText(null);
 
                         IGame.getInstance().processCommand(text);
+
+                        GamePanel.this.mapPanel.repaint();
 
                         area.append("> "+text+"\n");
 

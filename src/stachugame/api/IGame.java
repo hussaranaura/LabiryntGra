@@ -1,5 +1,6 @@
 package stachugame.api;
 
+import stachugame.api.entities.IEntity;
 import stachugame.api.maps.IRoomMap;
 import stachugame.implementation.Game;
 
@@ -44,4 +45,9 @@ public interface IGame {
      * @param cmd polecenie jako String
      */
     void processCommand(String cmd);
+
+    /**
+     * @return Obiekt gracza
+     */
+    IEntity getPlayer();
 }

@@ -19,6 +19,8 @@ public class GameRoom implements IRoom {
 	private final boolean isFinal;
 	public GameRoom(IRoomMap parent, boolean isFinal) {
 		exits = new HashMap<>();
+		entities = new HashSet<>();
+		items = new HashSet<>();
 		this.parent = parent;
 		this.isFinal = isFinal;
 	}

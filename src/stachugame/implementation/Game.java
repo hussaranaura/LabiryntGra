@@ -2,8 +2,10 @@ package stachugame.implementation;
 
 import stachugame.api.GameState;
 import stachugame.api.IGame;
+import stachugame.api.entities.IEntity;
 import stachugame.api.maps.IRoomMap;
 import stachugame.implementation.entities.player.Player;
+import stachugame.implementation.util.MapLoaderUtil;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -49,7 +51,14 @@ public class Game implements IGame {
 
 	@Override
 	public void processCommand(String cmd) {
+		try {
+			map = MapLoaderUtil.loadLevel(cmd);
+		} catch(Exception ignored){}
+	}
 
+	@Override
+	public IEntity getPlayer() {
+		return player;
 	}
 
 	@Override
