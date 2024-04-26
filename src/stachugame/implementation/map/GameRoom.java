@@ -54,7 +54,7 @@ public class GameRoom implements IRoom {
 	}
 	@Override
 	public void setFound() {
-		wasFound = !wasFound;
+		wasFound = true;
 	}
 
 	@Override
