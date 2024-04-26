@@ -31,6 +31,9 @@ public class MapLoaderUtil {
                 continue;
 
             rooms[x][y] = new GameRoom(map, (finishX == x && finishY == y));
+
+            if(startX == x && finishY == y)
+                rooms[x][y].setFound();
         }
         for(int i = 0; i < 100; i++){
             int x = i/10;

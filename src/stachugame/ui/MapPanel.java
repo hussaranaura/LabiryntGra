@@ -39,11 +39,14 @@ public class MapPanel extends JPanel {
                 if(room == null)
                     continue;
 
+                if(!room.wasFound() && !room.isFinalRoom())
+                    continue;
+
                 for(Direction dir : Direction.values()){
                     g.drawImage(ImageCache.get(getImageName(room, dir)),x*20, y*20, null, null);
                 }
 
-                if(room.getEntities().contains(IGame.getInstance().getPlayer())){
+                if(room == IGame.getInstance().getPlayer().getCurrentRoom()){
                     g.drawImage(ImageCache.get("player_marker"), x*20, y*20, null, null);
                 }
 
