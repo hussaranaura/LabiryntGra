@@ -28,10 +28,10 @@ public enum Direction {
 
     public static Direction getDirByName(String name){
         return switch(Normalizer.normalize(name.toUpperCase(), Normalizer.Form.NFD)){
-            case "N", "NORTH", "POLNOC" -> NORTH;
-            case "E", "EAST", "WSCHOD" -> EAST;
-            case "S", "SOUTH", "POLUDNIE" -> SOUTH;
-            case "W", "WEST", "ZACHOD" -> WEST;
+            case "N", "NORTH", "POLNOC", "PÓŁNOC" -> NORTH;
+            case "E", "EAST", "WSCHOD", "WSCHÓD" -> EAST;
+            case "S", "SOUTH", "POLUDNIE", "POŁUDNIE" -> SOUTH;
+            case "W", "WEST", "ZACHOD", "ZACHÓD" -> WEST;
             default -> null;
         };
     }
