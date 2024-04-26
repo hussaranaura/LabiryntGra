@@ -17,7 +17,8 @@ public class Player extends AbstractEntity {
 	@Override
 	public void setCurrentRoom(IRoom room){
 		super.setCurrentRoom(room);
-		room.setFound();
+		if(room != null)
+			room.setFound();
 	}
 
 }

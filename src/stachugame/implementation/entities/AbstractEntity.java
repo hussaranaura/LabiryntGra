@@ -45,7 +45,22 @@ public abstract class AbstractEntity implements IEntity {
 		currentRoom.moveEntity(this, dir);
 	}
 	public void setCurrentRoom(IRoom room) {
-		this.currentRoom=room;
+		if(room == currentRoom)
+			return;
+		if(room == null) {
+			IRoom oldRoom = currentRoom;
+			currentRoom = null;
+			oldRoom.removeEntity(this);
+			return;
+		}
+		if(currentRoom != null){
+			IRoom oldRoom = currentRoom;
+			currentRoom = null;
+			oldRoom.removeEntity(this);
+		}
+		currentRoom = room;
+		room.addEntity(this);
+
 	}
 	public void kill() {
 		currentRoom.removeEntity(this);

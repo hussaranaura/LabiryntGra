@@ -3,6 +3,7 @@ package stachugame.implementation;
 import stachugame.api.GameState;
 import stachugame.api.IGame;
 import stachugame.api.entities.IEntity;
+import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
 import stachugame.api.maps.IRoomMap;
 import stachugame.implementation.entities.player.Player;
