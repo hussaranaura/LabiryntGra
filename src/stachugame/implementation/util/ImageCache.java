@@ -36,7 +36,7 @@ public class ImageCache {
     }
 
     private static void putImage(String name) throws IOException {
-        imageMap.put(name, ImageIO.read(Objects.requireNonNull(ImageCache.class.getResource("/" + name + ".png"))));;
+        imageMap.put(name, ImageIO.read(Objects.requireNonNull(ImageCache.class.getResource("/" + name + ".png"))));
     }
 
     public static Image get(String name){

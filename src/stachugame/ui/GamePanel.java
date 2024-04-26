@@ -8,11 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 public class GamePanel extends JPanel {
     MapPanel mapPanel;
 
-    public GamePanel() {
+    public GamePanel() throws UnsupportedEncodingException {
         setLayout(null);
 
         setSize(710, 600);
@@ -40,8 +42,8 @@ public class GamePanel extends JPanel {
         add(outputPane);
 
         //Dodanie tła mapy.
-        JPanel mapPanel = new MapPanel(ImageCache.get("grid"));
-        this.mapPanel = (MapPanel) mapPanel;
+        MapPanel mapPanel = new MapPanel(ImageCache.get("grid"));
+        this.mapPanel = mapPanel;
 
         //mapCanvas = new MapCanvas(ImageCache.get("grid"));
         //mapPanel.add(mapCanvas);
@@ -65,11 +67,12 @@ public class GamePanel extends JPanel {
                         String text = inputField.getText();
                         inputField.setText(null);
 
+                        area.append("> "+text+"\n");
+
                         IGame.getInstance().processCommand(text);
 
                         GamePanel.this.mapPanel.repaint();
 
-                        area.append("> "+text+"\n");
 
                     });
                 }

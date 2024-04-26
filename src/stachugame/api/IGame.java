@@ -5,6 +5,7 @@ import stachugame.api.maps.IRoomMap;
 import stachugame.implementation.Game;
 
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 
 public interface IGame {
     IGame instance = new Game();
@@ -24,7 +25,7 @@ public interface IGame {
      * Zmienia wyjście tekstu na podany poniżej
      * @param os OutputStream
      */
-    void setOut(OutputStream os);
+    void setOut(OutputStream os) throws UnsupportedEncodingException;
 
     /**
      * Funkcja �aduje nast�pny poziom do gry

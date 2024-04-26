@@ -32,7 +32,7 @@ public class MapLoaderUtil {
 
             rooms[x][y] = new GameRoom(map, (finishX == x && finishY == y));
 
-            if(startX == x && finishY == y)
+            if(startX == x && startY == y)
                 rooms[x][y].setFound();
         }
         for(int i = 0; i < 100; i++){
@@ -65,5 +65,19 @@ public class MapLoaderUtil {
 
         return map;
 
+    }
+
+    public static IRoomMap getMap(int level) {
+        String mapCode;
+        switch(level){
+            case 0:
+                mapCode = "55|09|63636300638c9c9a00c900006900430000c3006965361863c3c3c9249c596900c30000c3006900006900a63632c100c9c9c9";
+                break;
+            default:
+                mapCode = "61|51|0000000000000000000000000000000000006300000000aa000455559a000455553a00000000aa00000000c9000000000000";
+                break;
+        }
+
+        return loadLevel(mapCode);
     }
 }

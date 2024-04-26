@@ -17,6 +17,8 @@ public class GameMap implements IRoomMap {
 	private final Point finishPos;
 
 	public GameMap(int startX, int startY, int finishX, int finishY){
+		entities = new HashSet<>();
+
 		startPos = new Point(startX, startY);
 		finishPos = new Point(finishX, finishY);
 	}

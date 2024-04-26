@@ -1,6 +1,7 @@
 package stachugame.ui;
 
 import stachugame.api.IGame;
+import stachugame.api.entities.IEntity;
 import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
 import stachugame.api.maps.IRoomMap;
@@ -39,15 +40,15 @@ public class MapPanel extends JPanel {
                 if(room == null)
                     continue;
 
+                IEntity player = IGame.getInstance().getPlayer();
+                if(player != null && room.equals(player.getCurrentRoom())){
+                    g.drawImage(ImageCache.get("player_marker"), x*20, y*20, null, null);
+                }
                 if(!room.wasFound() && !room.isFinalRoom())
                     continue;
 
                 for(Direction dir : Direction.values()){
                     g.drawImage(ImageCache.get(getImageName(room, dir)),x*20, y*20, null, null);
-                }
-
-                if(room == IGame.getInstance().getPlayer().getCurrentRoom()){
-                    g.drawImage(ImageCache.get("player_marker"), x*20, y*20, null, null);
                 }
 
             }
