@@ -61,4 +61,10 @@ public interface IRoom {
 	 */
 	void setFound();
 
+	/**
+	 * Checks if this room is the end of the map
+	 * @return true or false
+	 */
+	boolean isFinalRoom();
+
 }

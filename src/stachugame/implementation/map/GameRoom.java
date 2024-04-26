@@ -16,9 +16,11 @@ public class GameRoom implements IRoom {
 	private HashSet<IItem> items;
 	private final HashMap<Direction, IRoom> exits;
 	private final IRoomMap parent;
-	public GameRoom(IRoomMap parent) {
+	private final boolean isFinal;
+	public GameRoom(IRoomMap parent, boolean isFinal) {
 		exits = new HashMap<>();
 		this.parent = parent;
+		this.isFinal = isFinal;
 	}
 	private boolean wasFound = false;
 	@Override
@@ -52,6 +54,12 @@ public class GameRoom implements IRoom {
 	public void setFound() {
 		wasFound = !wasFound;
 	}
+
+	@Override
+	public boolean isFinalRoom() {
+		return isFinal;
+	}
+
 	@Override
 	public IRoomMap getParent() {
 		return parent;

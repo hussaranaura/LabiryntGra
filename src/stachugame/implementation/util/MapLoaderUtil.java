@@ -23,12 +23,14 @@ public class MapLoaderUtil {
 
         IRoom[][] rooms = map.getRooms();
         for(int i = 0; i < 100; i++){
+            int x = i/10;
+            int y = i%10;
             byte roomMask = Byte.parseByte(codes[2].substring(i, i+1), 16);
 
             if(roomMask == 0)
                 continue;
 
-            rooms[i/10][i%10] = new GameRoom(map);
+            rooms[x][y] = new GameRoom(map, (finishX == x && finishY == y));
         }
         for(int i = 0; i < 100; i++){
             int x = i/10;

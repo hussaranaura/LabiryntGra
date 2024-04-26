@@ -2,6 +2,7 @@ package stachugame.ui;
 
 import stachugame.Main;
 import stachugame.api.IGame;
+import stachugame.implementation.util.ImageCache;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,7 +14,7 @@ import java.io.IOException;
 public class GamePanel extends JPanel {
     MapCanvas mapCanvas;
 
-    public GamePanel() throws IOException {
+    public GamePanel() {
         setLayout(null);
 
         setSize(710, 600);
@@ -43,7 +44,7 @@ public class GamePanel extends JPanel {
         //Dodanie tła mapy.
         JPanel mapPanel = new JPanel();
 
-        mapCanvas = new MapCanvas(ImageIO.read(getClass().getResource("/grid.png")));
+        mapCanvas = new MapCanvas(ImageCache.get("grid"));
         mapPanel.add(mapCanvas);
         Dimension mapPanelPreferredSize = mapPanel.getPreferredSize();
         add(mapPanel);
