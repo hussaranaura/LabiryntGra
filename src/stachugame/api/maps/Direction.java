@@ -4,8 +4,8 @@ import java.text.Normalizer;
 
 public enum Direction {
     NORTH((byte) 0b0000_0001),
-    EAST((byte) 0b0000_0010),
     SOUTH((byte) 0b0000_0100),
+    EAST((byte) 0b0000_0010),
     WEST((byte) 0b0000_1000);
 
     private final byte bitmask;
