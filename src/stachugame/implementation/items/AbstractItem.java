@@ -2,19 +2,17 @@ package stachugame.implementation.items;
 
 import stachugame.api.entities.IEntity;
 import stachugame.api.items.IItem;
+import stachugame.implementation.entities.AbstractEntity;
 
 public abstract class AbstractItem implements IItem {
 
 	protected String name;
-	
-	AbstractItem(String name){
+
+	public AbstractItem(String name){
 		this.name=name;
 	}
-	
-	@Override
-	public String getItemName() {
-		return name;
-	}
+
+	public abstract String getItemName();
 
 	@Override
 	public abstract void useItem(IEntity user); 
