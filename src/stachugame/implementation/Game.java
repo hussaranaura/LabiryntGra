@@ -101,17 +101,32 @@ public class Game implements IGame {
 			}
 
 			dialogCount++;
-
-			//state = GameState.EXPLORING;
 		}else if(state == GameState.EXPLORING){
-			//Kod poruszania się po mapie
+
+			Direction dir = Direction.getDirByName(cmd.trim());
+			if(dir == null){
+				printOptions();
+			}else{
+				player.move(dir);
+				progressGameLoop();
+			}
+
 		}else if(state == GameState.FIGHTING){
 			//Kod walki
 		}
 	}
 
 	private void printOptions() {
-
+		if(state == GameState.EXPLORING){
+			out.println("   Możliwe działania:\n");
+			out.println(
+					" PÓŁNOC - ruch do góry\n" +
+					" WSCHÓD - ruch w prawo\n" +
+					" POŁUDNIE - ruch do dołu\n" +
+					" ZACHÓD - ruch w lewo\n\n"
+			);
+			out.println("");
+		}
 	}
 
 	@Override
