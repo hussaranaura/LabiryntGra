@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 
 public class GamePanel extends JPanel {
     MapPanel mapPanel;
@@ -27,8 +26,9 @@ public class GamePanel extends JPanel {
         area.setBackground(Color.BLACK);
         area.setForeground(Color.WHITE);
         area.setLineWrap(true);
+        area.setWrapStyleWord(true);
         area.setEditable(false);
-        area.setFont(Main.monocraft_13);
+        area.setFont(Main.monocraft_12_3);
 
         IGame.getInstance().setOut(new JTextAreaOutputStream(area));
 
@@ -57,7 +57,7 @@ public class GamePanel extends JPanel {
         inputField.setBounds(10, 5+outputPanePreferredSize.height, outputPanePreferredSize.width, inputField.getPreferredSize().height);
         inputField.setForeground(Color.WHITE);
         inputField.setBackground(Color.BLACK);
-        inputField.setFont(Main.monocraft_13);
+        inputField.setFont(Main.monocraft_12_3);
         add(inputField);
         inputField.addKeyListener(new KeyAdapter() {
             @Override
