@@ -89,6 +89,30 @@ public class Game implements IGame {
 			}
 		}
 
+		if(state == GameState.EXPLORING){
+			for(IEntity entity : getCurrentMap().getEntityList().toArray(new IEntity[0])){
+				entity.update();
+			}
+		}
+		if(state == GameState.FIGHTING){
+			printOptions();
+			ArrayList<IEnemy> enemyList = new ArrayList<>();
+			for(IEntity entity : player.getCurrentRoom().getEntities()){
+				if(entity instanceof IEnemy){
+					enemyList.add((IEnemy) entity);
+				}
+			}
+			System.out.println(enemyList.size()+"SIZE");
+			if(!enemyList.isEmpty())
+				enemyList.get((int) (enemyList.size()*Math.random())).attack(player);
+
+			if(player.getHealth() == 0)
+				state = GameState.GAME_OVER;
+		}
+
+		if(state == GameState.GAME_OVER){
+			out.println("\n\nUmarłeś. \nStachu teraz nigdy nie zasmakuje nieskończonego Jabola");
+		}
 	}
 
 	@Override
