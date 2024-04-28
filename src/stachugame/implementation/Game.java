@@ -256,6 +256,20 @@ public class Game implements IGame {
 				case "info":
 					break;
 				case "atak":
+					try{
+						ArrayList<IEntity> enemyList = new ArrayList<>();
+						for(IEntity entity : room.getEntities()){
+							if(entity instanceof IEnemy){
+								enemyList.add(entity);
+							}
+						}
+						IEntity entity = enemyList.get(Integer.parseInt(args[1])-1);
+						System.out.println("attacked" + entity);
+						player.attack(entity);
+					}catch(Exception exception){
+						out.println("ZŁE ID POSTACI\n");
+						progressGameloopAfterCommand = false;
+					}
 					break;
 				default:
 					progressGameloopAfterCommand = false;
