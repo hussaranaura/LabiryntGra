@@ -215,7 +215,29 @@ public class Game implements IGame {
 
 
 		}else if(state == GameState.FIGHTING){
-			//Kod walki
+			boolean progressGameloopAfterCommand = true;
+
+			switch(args[0]){
+				case "pomoc":
+					break;
+				case "przedmioty":
+					break;
+				case "uzyj":
+					break;
+				case "info":
+					break;
+				case "atak":
+					break;
+				default:
+					progressGameloopAfterCommand = false;
+
+
+			}
+
+			if(progressGameloopAfterCommand){
+				System.out.println("Progressed");
+				progressGameLoop();
+			}
 		}
 	}
 
