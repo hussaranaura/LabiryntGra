@@ -4,6 +4,7 @@ public enum GameState {
     NOT_INITIALIZED,
     INITIALIZING,
     EXPLORING,
-    FIGHTING;
+    FIGHTING,
+    GAME_OVER;
 
 }
