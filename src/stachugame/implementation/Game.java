@@ -227,6 +227,8 @@ public class Game implements IGame {
 
 			switch(args[0]){
 				case "pomoc":
+					printOptions();
+					progressGameloopAfterCommand = false;
 					break;
 				case "przedmioty":
 					if(player.getItems().isEmpty()){
