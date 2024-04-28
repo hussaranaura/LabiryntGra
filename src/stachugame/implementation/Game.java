@@ -189,18 +189,39 @@ public class Game implements IGame {
 	}
 
 	private void printOptions() {
-		if(state == GameState.EXPLORING){
-			out.println("   Możliwe działania:\n");
-			out.println(
-					" POMOC - lista możliwych działań\n" +
-					" POLNOC - ruch do góry\n" +
-					" WSCHOD - ruch w prawo\n" +
-					" POLUDNIE - ruch do dołu\n" +
-					" ZACHOD - ruch w lewo\n" +
-					" ROZGLAD - obejrzyj się po pokoju\n" +
-					" PRZEDMIOTY - zobacz swój ekwipunek\n"
-			);
-			out.println("\n");
+		switch(state){
+			case EXPLORING:
+				out.println("   Możliwe działania:\n");
+				out.println(
+						" POMOC - lista możliwych działań\n" +
+								" POLNOC - ruch do góry\n" +
+								" WSCHOD - ruch w prawo\n" +
+								" POLUDNIE - ruch do dołu\n" +
+								" ZACHOD - ruch w lewo\n" +
+								" ROZGLAD - obejrzyj się po pokoju\n" +
+								" PRZEDMIOTY - zobacz swój ekwipunek\n"
+				);
+				out.println("\n");
+				break;
+			case FIGHTING:
+				int i = 1;
+				IRoom room = player.getCurrentRoom();
+				for(IEntity enemy : room.getEntities()){
+					if(enemy instanceof IEnemy){
+						out.println(String.format(" %d. %s", i, enemy.getName()));
+						i++;
+					}
+				}
+				out.println("   Możliwe działania:\n");
+				out.println(
+						" ATAK # - atakuje postać\n" +
+						" UZYJ # - uzywa przedmiot\n" +
+						" PRZEDMIOTY - lista przedmiotów\n" +
+						" INFO - info o graczu\n" +
+						" POMOC - lista działań\n"
+				);
+				out.println("\n");
+				break;
 		}
 	}
 
