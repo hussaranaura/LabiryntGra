@@ -253,8 +253,6 @@ public class Game implements IGame {
 						progressGameloopAfterCommand = false;
 					}
 					break;
-				case "info":
-					break;
 				case "atak":
 					try{
 						ArrayList<IEntity> enemyList = new ArrayList<>();
@@ -313,9 +311,7 @@ public class Game implements IGame {
 				out.println(
 						" ATAK # - atakuje postać\n" +
 						" UZYJ # - uzywa przedmiot\n" +
-						" PRZEDMIOTY - lista przedmiotów\n" +
-						" INFO - info o graczu\n" +
-						" POMOC - lista działań\n"
+						" PRZEDMIOTY - lista przedmiotów\n"
 				);
 				out.println("\n");
 				break;
