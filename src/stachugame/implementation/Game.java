@@ -2,7 +2,9 @@ package stachugame.implementation;
 
 import stachugame.api.GameState;
 import stachugame.api.IGame;
+import stachugame.api.entities.IEnemy;
 import stachugame.api.entities.IEntity;
+import stachugame.api.items.IItem;
 import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
 import stachugame.api.maps.IRoomMap;
@@ -14,7 +16,9 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Set;
 
 public class Game implements IGame {
 	private Player player;
@@ -68,11 +72,32 @@ public class Game implements IGame {
 
 	@Override
 	public void progressGameLoop() {
+		for(IEntity entity : getCurrentMap().getEntityList()){
+			entity.update();
+		}
+		if(state == GameState.EXPLORING || state == GameState.FIGHTING){
+			IRoom room = player.getCurrentRoom();
+			boolean isEnemyInRoom = false;
+			for(IEntity entity : room.getEntities()){
+
+				if(entity instanceof IEnemy){
+					isEnemyInRoom = true;
+					break;
+				}
+			}
+			if(isEnemyInRoom){
+				state = GameState.FIGHTING;
+			}
+		}
 
 	}
 
 	@Override
 	public void processCommand(String cmd) {
+		String[] args = cmd.toLowerCase().split(" ");
+
+		IRoom room = player.getCurrentRoom();
+
 		if(state == GameState.INITIALIZING){
 			if(dialogCount == 0) {
 				out.println("\n\n\n\n\n\n   [W piwniczce baru \"Gut\"]" +
@@ -102,14 +127,61 @@ public class Game implements IGame {
 
 			dialogCount++;
 		}else if(state == GameState.EXPLORING){
+			boolean progressGameloopAfterCommand = true;
 
-			Direction dir = Direction.getDirByName(cmd.trim());
-			if(dir == null){
-				printOptions();
-			}else{
-				player.move(dir);
+			switch(args[0]){
+				case "pomoc":
+					printOptions();
+					progressGameloopAfterCommand = false;
+					break;
+				case "przedmioty":
+					if(player.getItems().isEmpty()){
+						out.println("Nie masz nic w ekwipunku\n");
+						break;
+					}
+					break;
+				case "podnies":
+					if(room.getItems().isEmpty()) {
+						out.println("W tym pokoju nic nie ma...\n\n");
+						break;
+					}
+					try{
+						int itemIndex = Integer.parseInt(args[1]);
+						IItem[] items = room.getItems().toArray(new IItem[0]);
+						room.pickUpItem(player, items[itemIndex]);
+					}catch(NumberFormatException exception){
+						out.println("ZŁE ID PRZEDMIOTU\n");
+						progressGameloopAfterCommand = false;
+					}
+					break;
+				case "rozglad":
+					if(room.getItems().isEmpty()){
+						out.println("W tym pokoju nic nie ma...\n\n");
+					}else{
+						int i = 1;
+						for(IItem item : room.getItems()){
+							out.println(String.format(" %d. %s", i, item.getItemName()));
+						}
+						out.println("\n\nNapisz PODNIES # aby podnieść przedmiot");
+					}
+					break;
+				case "polnoc":
+				case "poludnie":
+				case "wschod":
+				case "zachod":
+					Direction dir = Direction.getDirByName(args[0]);
+					player.move(dir);
+
+					break;
+				default:
+					progressGameloopAfterCommand = false;
+					printOptions();
+			}
+
+			if(progressGameloopAfterCommand){
 				progressGameLoop();
 			}
+
 
 		}else if(state == GameState.FIGHTING){
 			//Kod walki
@@ -120,12 +192,15 @@ public class Game implements IGame {
 		if(state == GameState.EXPLORING){
 			out.println("   Możliwe działania:\n");
 			out.println(
-					" PÓŁNOC - ruch do góry\n" +
-					" WSCHÓD - ruch w prawo\n" +
-					" POŁUDNIE - ruch do dołu\n" +
-					" ZACHÓD - ruch w lewo\n\n"
+					" POMOC - lista możliwych działań\n" +
+					" POLNOC - ruch do góry\n" +
+					" WSCHOD - ruch w prawo\n" +
+					" POLUDNIE - ruch do dołu\n" +
+					" ZACHOD - ruch w lewo\n" +
+					" ROZGLAD - obejrzyj się po pokoju\n" +
+					" PRZEDMIOTY - zobacz swój ekwipunek\n"
 			);
-			out.println("");
+			out.println("\n");
 		}
 	}
 

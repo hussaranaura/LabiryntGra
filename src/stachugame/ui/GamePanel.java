@@ -67,7 +67,7 @@ public class GamePanel extends JPanel {
                         String text = inputField.getText();
                         inputField.setText(null);
 
-                        area.append("> "+text+"\n");
+                        area.append("> "+text+"\n\n");
 
                         IGame.getInstance().processCommand(text);
 

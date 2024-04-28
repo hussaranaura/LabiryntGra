@@ -4,6 +4,7 @@ import java.util.Set;
 
 import stachugame.api.entities.IEntity;
 import stachugame.api.items.IItem;
+import stachugame.implementation.entities.player.Player;
 
 public interface IRoom {
 	/**
@@ -67,4 +68,10 @@ public interface IRoom {
 	 */
 	boolean isFinalRoom();
 
+	/**
+	 * Przenosi przedmiot z listy przedmiotów w pokoju do ekwipunku postaci
+	 * @param entity Postac która ma podnieść przedmiot
+	 * @param item przedmiot do podniesienia
+	 */
+	void pickUpItem(IEntity entity, IItem item);
 }

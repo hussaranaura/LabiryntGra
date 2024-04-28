@@ -60,6 +60,12 @@ public class GameRoom implements IRoom {
 	}
 
 	@Override
+	public void pickUpItem(IEntity entity, IItem item) {
+		entity.getItems().add(item);
+		items.remove(item);
+	}
+
+	@Override
 	public IRoomMap getParent() {
 		return parent;
 	}
