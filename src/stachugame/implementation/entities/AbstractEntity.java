@@ -31,6 +31,14 @@ public abstract class AbstractEntity implements IEntity {
 		return currentHealth;
 	}
 	@Override
+	public void setHealth(int newHealth){
+		System.out.println(newHealth);
+		currentHealth = Math.max(Math.min(newHealth, maxHealth), 0);
+
+		if(currentHealth == 0)
+			kill();
+	}
+	@Override
 	public Set<IItem> getItems(){
 		return items;
 	}
@@ -41,7 +49,7 @@ public abstract class AbstractEntity implements IEntity {
 		return currentRoom;
 	}
 	public String getName() {
-		return name;
+		return String.format("%s [%d/%d HP]", name, currentHealth, maxHealth);
 	}
 	public void move(Direction dir) {
 		currentRoom.moveEntity(this, dir);

@@ -12,6 +12,12 @@ public interface IEntity {
 	 * @return ilosc zycia
 	 */
 	int getHealth ();
+
+	/**
+	 * Ustawia życie postaci
+	 * @param newHealth nowa ilość życia
+	 */
+	void setHealth(int newHealth);
 	/**
 	 * Metoda zwracajaca maksymalna ilosc zycia
 	 * @return maksymalna ilosc zycia
