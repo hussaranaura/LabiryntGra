@@ -229,6 +229,17 @@ public class Game implements IGame {
 				case "pomoc":
 					break;
 				case "przedmioty":
+					if(player.getItems().isEmpty()){
+						out.println("Nie masz nic w ekwipunku\n");
+						break;
+					}else{
+						out.println("Twoje przedmioty:");
+						int i = 1;
+						for(IItem item : player.getItems()){
+							out.println(String.format(" %d. %s", i, item.getItemName()));
+							i++;
+						}
+					}
 					break;
 				case "uzyj":
 					try{
