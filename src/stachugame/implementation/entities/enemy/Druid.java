@@ -6,7 +6,7 @@ import stachugame.api.maps.Direction;
 import stachugame.implementation.entities.AbstractEntity;
 
 public class Druid extends AbstractEntity implements IEnemy {
-    private int damage;
+    private final int damage;
     public Druid(int maxHealth, int damage) {
         super("Druid", maxHealth);
         this.damage = damage;
@@ -28,6 +28,6 @@ public class Druid extends AbstractEntity implements IEnemy {
 
     @Override
     public void attack(IEntity entity) {
-
+        entity.setHealth(entity.getHealth()-damage);
     }
 }
