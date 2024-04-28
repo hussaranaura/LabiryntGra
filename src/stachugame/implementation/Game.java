@@ -15,10 +15,7 @@ import java.awt.*;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
-import java.util.Arrays;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class Game implements IGame {
 	private Player player;
@@ -87,6 +84,8 @@ public class Game implements IGame {
 			}
 			if(isEnemyInRoom){
 				state = GameState.FIGHTING;
+			}else{
+				state = GameState.EXPLORING;
 			}
 		}
 
