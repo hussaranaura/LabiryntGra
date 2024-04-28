@@ -138,6 +138,13 @@ public class Game implements IGame {
 					if(player.getItems().isEmpty()){
 						out.println("Nie masz nic w ekwipunku\n");
 						break;
+					}else{
+						out.println("Twoje przedmioty:");
+						int i = 1;
+						for(IItem item : player.getItems()){
+							out.println(String.format(" %d. %s", i, item.getItemName()));
+							i++;
+						}
 					}
 					break;
 				case "podnies":
@@ -146,10 +153,10 @@ public class Game implements IGame {
 						break;
 					}
 					try{
-						int itemIndex = Integer.parseInt(args[1]);
+						int itemIndex = Integer.parseInt(args[1]) - 1;
 						IItem[] items = room.getItems().toArray(new IItem[0]);
 						room.pickUpItem(player, items[itemIndex]);
-					}catch(NumberFormatException exception){
+					}catch(Exception exception){
 						out.println("ZŁE ID PRZEDMIOTU\n");
 						progressGameloopAfterCommand = false;
 					}
@@ -161,6 +168,7 @@ public class Game implements IGame {
 						int i = 1;
 						for(IItem item : room.getItems()){
 							out.println(String.format(" %d. %s", i, item.getItemName()));
+							i++;
 						}
 						out.println("\n\nNapisz PODNIES # aby podnieść przedmiot");
 					}
