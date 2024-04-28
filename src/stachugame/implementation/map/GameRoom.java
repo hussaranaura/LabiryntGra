@@ -1,9 +1,6 @@
 package stachugame.implementation.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import stachugame.api.entities.IEntity;
 import stachugame.api.items.IItem;
@@ -12,15 +9,15 @@ import stachugame.api.maps.IRoom;
 import stachugame.api.maps.IRoomMap;
 
 public class GameRoom implements IRoom {
-	private HashSet<IEntity> entities;
-	private HashSet<IItem> items;
+	private LinkedHashSet<IEntity> entities;
+	private LinkedHashSet<IItem> items;
 	private final HashMap<Direction, IRoom> exits;
 	private final IRoomMap parent;
 	private final boolean isFinal;
 	public GameRoom(IRoomMap parent, boolean isFinal) {
 		exits = new HashMap<>();
-		entities = new HashSet<>();
-		items = new HashSet<>();
+		entities = new LinkedHashSet<>();
+		items = new LinkedHashSet<>();
 		this.parent = parent;
 		this.isFinal = isFinal;
 	}

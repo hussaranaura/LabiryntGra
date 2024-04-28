@@ -1,6 +1,7 @@
 package stachugame.implementation.entities;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import stachugame.api.entities.IEntity;
@@ -12,13 +13,14 @@ public abstract class AbstractEntity implements IEntity {
 	protected int maxHealth;
 	protected int currentHealth;
 	protected IRoom currentRoom;
-	protected HashSet<IItem> items;
+	protected LinkedHashSet<IItem> items;
 	protected String name;
 
 	public AbstractEntity(String name, int maxHealth) {
 		this.name=name;
 		this.maxHealth=maxHealth;
 		this.currentHealth=maxHealth;
+		this.items = new LinkedHashSet<>();
 	}
 	@Override
 	public int getMaxHealth(){
