@@ -69,9 +69,6 @@ public class Game implements IGame {
 
 	@Override
 	public void progressGameLoop() {
-		for(IEntity entity : getCurrentMap().getEntityList()){
-			entity.update();
-		}
 		if(state == GameState.EXPLORING || state == GameState.FIGHTING){
 			IRoom room = player.getCurrentRoom();
 			boolean isEnemyInRoom = false;
@@ -82,6 +79,7 @@ public class Game implements IGame {
 					break;
 				}
 			}
+			System.out.println(isEnemyInRoom);
 			if(isEnemyInRoom){
 				state = GameState.FIGHTING;
 			}else{
@@ -196,6 +194,16 @@ public class Game implements IGame {
 						out.println("\n\nNapisz PODNIES # aby podnieść przedmiot");
 					}
 					break;
+				case "uzyj":
+					try{
+						int itemIndex = Integer.parseInt(args[1]) - 1;
+						IItem[] items = player.getItems().toArray(new IItem[0]);
+						items[itemIndex].useItem(player);
+					}catch(Exception exception){
+						out.println("ZŁE ID PRZEDMIOTU\n");
+						progressGameloopAfterCommand = false;
+					}
+					break;
 				case "polnoc":
 				case "poludnie":
 				case "wschod":
@@ -223,6 +231,14 @@ public class Game implements IGame {
 				case "przedmioty":
 					break;
 				case "uzyj":
+					try{
+						int itemIndex = Integer.parseInt(args[1]) - 1;
+						IItem[] items = player.getItems().toArray(new IItem[0]);
+						items[itemIndex].useItem(player);
+					}catch(Exception exception){
+						out.println("ZŁE ID PRZEDMIOTU\n");
+						progressGameloopAfterCommand = false;
+					}
 					break;
 				case "info":
 					break;
@@ -252,7 +268,8 @@ public class Game implements IGame {
 								" POLUDNIE - ruch do dołu\n" +
 								" ZACHOD - ruch w lewo\n" +
 								" ROZGLAD - obejrzyj się po pokoju\n" +
-								" PRZEDMIOTY - zobacz swój ekwipunek\n"
+								" PRZEDMIOTY - zobacz swój ekwipunek\n" +
+								" UZYJ # - uzywa przedmiot\n"
 				);
 				out.println("\n");
 				break;
@@ -276,6 +293,8 @@ public class Game implements IGame {
 				out.println("\n");
 				break;
 		}
+
+
 	}
 
 	@Override
