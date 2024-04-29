@@ -1,3 +1,8 @@
+# Uczestnicy:
+hussaranaura/somehussar - Bartosz Jóźwiak
+cyckimurzynki / Fiut Kutas - Mikołaj Gutowski
+MARIUSZMOCARZ4 - Oskar Śliziewski
+
 # Dokumentacja https://hussaranaura.github.io/LabiryntGra/
 
 # Kreator map!!!
