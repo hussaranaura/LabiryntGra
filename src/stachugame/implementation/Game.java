@@ -83,6 +83,9 @@ public class Game implements IGame {
 			if(isEnemyInRoom){
 				state = GameState.FIGHTING;
 			}else{
+				if(state == GameState.FIGHTING){
+					out.println("\n\nWYGRANA WALKA\n\n");
+				}
 				state = GameState.EXPLORING;
 			}
 		}
@@ -93,7 +96,6 @@ public class Game implements IGame {
 			}
 		}
 		if(state == GameState.FIGHTING){
-			printOptions();
 			ArrayList<IEnemy> enemyList = new ArrayList<>();
 			for(IEntity entity : player.getCurrentRoom().getEntities()){
 				if(entity instanceof IEnemy){
@@ -101,11 +103,16 @@ public class Game implements IGame {
 				}
 			}
 			System.out.println(enemyList.size()+"SIZE");
-			if(!enemyList.isEmpty())
-				enemyList.get((int) (enemyList.size()*Math.random())).attack(player);
+			if(!enemyList.isEmpty()) {
+				IEnemy enemy = enemyList.get((int) (enemyList.size() * Math.random()));
+				enemy.attack(player);
+				out.println(((IEntity) enemy).getName() + " atakuje gracza: "+player.toString() + " za "+player.getDamage() + " DMG\n");
+			}
 
 			if(player.getHealth() == 0)
 				state = GameState.GAME_OVER;
+
+			printOptions();
 		}
 
 		if(state == GameState.GAME_OVER){
@@ -213,8 +220,9 @@ public class Game implements IGame {
 						player.move(dir);
 					} else {
 						progressGameloopAfterCommand = false;
-						printOptions();
 					}
+					printOptions();
+
 
 					break;
 				case "wyjdz":
@@ -275,8 +283,8 @@ public class Game implements IGame {
 							}
 						}
 						IEntity entity = enemyList.get(Integer.parseInt(args[1])-1);
-						System.out.println("attacked" + entity);
 						player.attack(entity);
+						out.println(player.getName() + " atakuje: "+entity.toString() + " za "+player.getDamage() + " DMG\n");
 					}catch(Exception exception){
 						out.println("ZŁE ID POSTACI\n");
 						progressGameloopAfterCommand = false;
@@ -322,7 +330,6 @@ public class Game implements IGame {
 				);
 				if(player.getCurrentRoom().isFinalRoom())
 					out.println(" WYJDZ - przejdz do nastepnego poziomu");
-				out.println("\n");
 				break;
 			case FIGHTING:
 				int i = 1;
@@ -338,7 +345,6 @@ public class Game implements IGame {
 						" UZYJ # - uzywa przedmiot\n" +
 						" PRZEDMIOTY - lista przedmiotów\n"
 				);
-				out.println("\n");
 				break;
 		}
 
