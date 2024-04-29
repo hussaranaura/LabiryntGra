@@ -2,6 +2,7 @@ package stachugame.ui;
 
 import stachugame.Main;
 import stachugame.api.IGame;
+import stachugame.implementation.items.potions.HealthPotion;
 import stachugame.implementation.util.ImageCache;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 
 public class GamePanel extends JPanel {
     MapPanel mapPanel;
+    HealthPanel healthPanel;
 
     public GamePanel() throws UnsupportedEncodingException {
         setLayout(null);
@@ -42,15 +44,22 @@ public class GamePanel extends JPanel {
         add(outputPane);
 
         //Dodanie tła mapy.
-        MapPanel mapPanel = new MapPanel(ImageCache.get("grid"));
-        this.mapPanel = mapPanel;
-
+        this.mapPanel = new MapPanel();
         //mapCanvas = new MapCanvas(ImageCache.get("grid"));
         //mapPanel.add(mapCanvas);
         mapPanel.setPreferredSize(new Dimension(200, 200));
         Dimension mapPanelPreferredSize = mapPanel.getPreferredSize();
         add(mapPanel);
         mapPanel.setBounds(outputPanePreferredSize.width+20, 0, mapPanelPreferredSize.width, mapPanelPreferredSize.height);
+
+        //Dodanie tła mapy.
+        this.healthPanel = new HealthPanel();
+        healthPanel.setPreferredSize(new Dimension(223, 90));
+        Dimension healthPanelPreferredSize = healthPanel.getPreferredSize();
+        add(healthPanel);
+        healthPanel.setBounds(outputPanePreferredSize.width+20, 220, healthPanelPreferredSize.width, healthPanelPreferredSize.height);
+
+
 
         //Dodanie miejsca na wysyłanie poleceń
         JTextField inputField = new JTextField();
@@ -72,7 +81,7 @@ public class GamePanel extends JPanel {
                         IGame.getInstance().processCommand(text);
 
                         GamePanel.this.mapPanel.repaint();
-
+                        GamePanel.this.healthPanel.repaint();
 
                     });
                 }

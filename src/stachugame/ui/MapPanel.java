@@ -14,8 +14,8 @@ public class MapPanel extends JPanel {
 
     private final Image background;
 
-    public MapPanel(Image background){
-        this.background = background;
+    public MapPanel(){
+        this.background = ImageCache.get("grid");
         setSize(200, 200);
         setMaximumSize(getSize());
         setMinimumSize(getSize());

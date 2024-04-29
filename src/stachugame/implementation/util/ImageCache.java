@@ -17,6 +17,8 @@ public class ImageCache {
         try {
             putImage("grid");
             putImage("player_marker");
+            putImage("bar_bg");
+            putImage("bar_health");
             loadDoors(false, false);
             loadDoors(false, true);
             loadDoors(true, false);
