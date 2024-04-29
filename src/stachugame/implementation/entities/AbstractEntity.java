@@ -32,7 +32,6 @@ public abstract class AbstractEntity implements IEntity {
 	}
 	@Override
 	public void setHealth(int newHealth){
-		System.out.println(newHealth);
 		currentHealth = Math.max(Math.min(newHealth, maxHealth), 0);
 
 		if(currentHealth == 0)
