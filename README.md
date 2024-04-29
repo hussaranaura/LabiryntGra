@@ -1,7 +1,9 @@
 # Uczestnicy:
-hussaranaura/somehussar - Bartosz Jóźwiak
-cyckimurzynki / Fiut Kutas - Mikołaj Gutowski
+hussaranaura/somehussar - Bartosz Jóźwiak<br>
+cyckimurzynki / Fiut Kutas - Mikołaj Gutowski<br>
 MARIUSZMOCARZ4 - Oskar Śliziewski
+
+# Jira: https://hussaranaura.atlassian.net/jira/software/projects/KAN/boards/1
 
 # Dokumentacja https://hussaranaura.github.io/LabiryntGra/
 
