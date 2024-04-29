@@ -47,6 +47,13 @@ public class Game implements IGame {
 		level++;
 		map = MapLoaderUtil.getMap(level);
 
+		if(map == null){
+
+			state = GameState.GAME_OVER;
+			out.println("\n\n\nKoniec gry!!!");
+			return;
+		}
+
 		IRoom[][] rooms = map.getRooms();
 		Point pos = map.getStartPos();
 		player.setCurrentRoom(rooms[pos.x][pos.y]);
@@ -230,8 +237,9 @@ public class Game implements IGame {
 						loadNextLevel();
 					}else{
 						progressGameloopAfterCommand = false;
-						printOptions();
 					}
+					printOptions();
+
 					break;
 				default:
 					progressGameloopAfterCommand = false;
