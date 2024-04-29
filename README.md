@@ -1,3 +1,5 @@
+# Dokumentacja https://hussaranaura.github.io/LabiryntGra/
+
 # Kreator map!!!
 Gra ma [własny kreator map!](https://hussaranaura.github.io/LabiryntGra/creator/). Kliknij na text obok aby go odwiedzić!
 
