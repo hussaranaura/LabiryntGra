@@ -1,0 +1,14 @@
+stachugame
+stachugame.api
+stachugame.api.entities
+stachugame.api.items
+stachugame.api.maps
+stachugame.implementation
+stachugame.implementation.entities
+stachugame.implementation.entities.enemy
+stachugame.implementation.entities.player
+stachugame.implementation.items
+stachugame.implementation.items.potions
+stachugame.implementation.map
+stachugame.implementation.util
+stachugame.ui
