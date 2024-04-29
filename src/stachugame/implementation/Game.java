@@ -190,7 +190,7 @@ public class Game implements IGame {
 						IItem[] items = room.getItems().toArray(new IItem[0]);
 						room.pickUpItem(player, items[itemIndex]);
 					}catch(Exception exception){
-						out.println("ZŁE ID PRZEDMIOTU\n");
+						out.println("ZLE ID PRZEDMIOTU\n");
 						progressGameloopAfterCommand = false;
 					}
 					break;
@@ -213,7 +213,7 @@ public class Game implements IGame {
 						items[itemIndex].useItem(player);
 						player.getItems().remove(items[itemIndex]);
 					}catch(Exception exception){
-						out.println("ZŁE ID PRZEDMIOTU\n");
+						out.println("ZLE ID PRZEDMIOTU\n");
 						progressGameloopAfterCommand = false;
 					}
 					break;
@@ -277,7 +277,7 @@ public class Game implements IGame {
 						IItem[] items = player.getItems().toArray(new IItem[0]);
 						items[itemIndex].useItem(player);
 					}catch(Exception exception){
-						out.println("ZŁE ID PRZEDMIOTU\n");
+						out.println("ZLE ID PRZEDMIOTU\n");
 						progressGameloopAfterCommand = false;
 					}
 					break;
@@ -293,7 +293,7 @@ public class Game implements IGame {
 						player.attack(entity);
 						out.println(player.getName() + " atakuje: "+entity.toString() + " za "+player.getDamage() + " DMG\n");
 					}catch(Exception exception){
-						out.println("ZŁE ID POSTACI\n");
+						out.println("ZLE ID POSTACI\n");
 						progressGameloopAfterCommand = false;
 					}
 					break;
