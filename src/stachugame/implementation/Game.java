@@ -61,7 +61,7 @@ public class Game implements IGame {
 
 	@Override
 	public void init() {
-		player = new Player("Stachu Jones", 6969);
+		player = new Player("Stachu Jones", 100);
 
 		//@TODO Zmień tekst fabularny na rozpoczecie gry.
         out.println("Po heroicznej bitwie z Czarnoksiężnikiem z Grodzkiej Doliny, słynny mag i mędrzec, Stachu Jones, powraca do swojego skromnego domu, tylko po to, aby odkryć, że jego zbiory ulubionego trunku - Jaboli - zostały skradzione przez plemię Druidów. " +
@@ -86,7 +86,6 @@ public class Game implements IGame {
 					break;
 				}
 			}
-			System.out.println(isEnemyInRoom);
 			if(isEnemyInRoom){
 				state = GameState.FIGHTING;
 			}else{
@@ -109,7 +108,6 @@ public class Game implements IGame {
 					enemyList.add((IEnemy) entity);
 				}
 			}
-			System.out.println(enemyList.size()+"SIZE");
 			if(!enemyList.isEmpty()) {
 				IEnemy enemy = enemyList.get((int) (enemyList.size() * Math.random()));
 				enemy.attack(player);
@@ -213,6 +211,7 @@ public class Game implements IGame {
 						int itemIndex = Integer.parseInt(args[1]) - 1;
 						IItem[] items = player.getItems().toArray(new IItem[0]);
 						items[itemIndex].useItem(player);
+						player.getItems().remove(items[itemIndex]);
 					}catch(Exception exception){
 						out.println("ZŁE ID PRZEDMIOTU\n");
 						progressGameloopAfterCommand = false;
@@ -305,7 +304,6 @@ public class Game implements IGame {
 			}
 
 			if(progressGameloopAfterCommand){
-				System.out.println("Progressed");
 				progressGameLoop();
 			}
 		}
