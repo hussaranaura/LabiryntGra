@@ -212,6 +212,14 @@ public class Game implements IGame {
 					player.move(dir);
 
 					break;
+				case "wyjdz":
+					if(room.isFinalRoom()){
+						loadNextLevel();
+					}else{
+						progressGameloopAfterCommand = false;
+						printOptions();
+					}
+					break;
 				default:
 					progressGameloopAfterCommand = false;
 					printOptions();
@@ -296,6 +304,8 @@ public class Game implements IGame {
 								" PRZEDMIOTY - zobacz swój ekwipunek\n" +
 								" UZYJ # - uzywa przedmiot\n"
 				);
+				if(player.getCurrentRoom().isFinalRoom())
+					out.println(" WYJDZ - przejdz do nastepnego poziomu");
 				out.println("\n");
 				break;
 			case FIGHTING:
