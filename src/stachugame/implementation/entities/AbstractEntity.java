@@ -49,8 +49,13 @@ public abstract class AbstractEntity implements IEntity {
 		return currentRoom;
 	}
 	public String getName() {
+		return name;
+	}
+
+	public String toString(){
 		return String.format("%s [%d/%d HP]", name, currentHealth, maxHealth);
 	}
+
 	public void move(Direction dir) {
 		currentRoom.moveEntity(this, dir);
 	}

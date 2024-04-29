@@ -328,7 +328,7 @@ public class Game implements IGame {
 				int i = 1;
 				for(IEntity enemy : room.getEntities()){
 					if(enemy instanceof IEnemy){
-						out.println(String.format(" %d. %s", i, enemy.getName()));
+						out.println(String.format(" %d. %s", i, enemy.toString()));
 						i++;
 					}
 				}
