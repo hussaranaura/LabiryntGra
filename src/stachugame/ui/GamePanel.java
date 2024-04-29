@@ -11,6 +11,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Główny panel gry
+ */
 public class GamePanel extends JPanel {
     MapPanel mapPanel;
     HealthPanel healthPanel;

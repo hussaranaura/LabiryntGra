@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Baza tekstur używanych w grach
+ */
 public class ImageCache {
 
     private static final HashMap<String, Image> imageMap;

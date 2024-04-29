@@ -6,6 +6,10 @@ import stachugame.api.entities.IEntity;
 import stachugame.api.items.IItem;
 import stachugame.implementation.entities.player.Player;
 
+/**
+ * Interfejs IRoom, <br>
+ * Deklaruje funkcje klasy pokoju
+ */
 public interface IRoom {
 	/**
 	 * funkcja do poruszania się między pokojami

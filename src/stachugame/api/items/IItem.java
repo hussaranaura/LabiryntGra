@@ -2,6 +2,10 @@ package stachugame.api.items;
 
 import stachugame.api.entities.IEntity;
 
+/**
+ * Interfejs IItem, <br>
+ * Deklaruje funkcje klasy przedmitów
+ */
 public interface IItem {
 	/**
 	 * funkcja która zwraca nazwę przedmiotu

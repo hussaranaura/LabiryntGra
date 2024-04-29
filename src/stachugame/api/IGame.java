@@ -7,6 +7,10 @@ import stachugame.implementation.Game;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Interfejs IGame, <br>
+ * Deklaruje funkcje głównej klasy gry
+ */
 public interface IGame {
     IGame instance = new Game();
 

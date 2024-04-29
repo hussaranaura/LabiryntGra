@@ -1,5 +1,9 @@
 package stachugame.api.entities;
 
+/**
+ * Interfejs ICanAttack<br>
+ * Oznacza postać, która może atakować
+ */
 public interface ICanAttack {
     /**
      * Atakuje podaną postac

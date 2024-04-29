@@ -1,6 +1,5 @@
 package stachugame.implementation.entities;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -9,6 +8,9 @@ import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
 import stachugame.api.items.IItem;
 
+/**
+ * Klasa bazowa wszystkich postaci
+ */
 public abstract class AbstractEntity implements IEntity {
 	protected int maxHealth;
 	protected int currentHealth;

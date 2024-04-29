@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * Klasa startowa
+ */
 public class Main {
 
     public static Font monocraft_12_3;

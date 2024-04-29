@@ -10,6 +10,10 @@ import stachugame.implementation.util.ImageCache;
 import javax.swing.*;
 import java.awt.*;
 
+
+/**
+ * Panel, w którym rysowana jest mapa
+ */
 public class MapPanel extends JPanel {
 
     private final Image background;

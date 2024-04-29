@@ -17,6 +17,9 @@ import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+/**
+ * Klasa, w której ma miejsce główna logika gry
+ */
 public class Game implements IGame {
 	private Player player;
 	private IRoomMap map;

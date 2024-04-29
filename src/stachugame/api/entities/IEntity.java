@@ -6,6 +6,10 @@ import stachugame.api.items.IItem;
 import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
 
+/**
+ * Interfejs IEntity, <br>
+ * Deklaruje funkcje Postaci
+ */
 public interface IEntity {
 	/**
 	 * Metoda zwracajaca aktualn� ilosc zycia

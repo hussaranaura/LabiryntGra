@@ -9,6 +9,9 @@ import stachugame.api.entities.IEntity;
 import stachugame.api.maps.IRoom;
 import stachugame.api.maps.IRoomMap;
 
+/**
+ * Klasa przedstawiająca zbiór pokoji w grze - mapę
+ */
 public class GameMap implements IRoomMap {
 	private IRoom[][] rooms = new IRoom[10][10];
 	private HashSet<IEntity> entities;

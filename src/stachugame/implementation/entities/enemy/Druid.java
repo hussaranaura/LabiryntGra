@@ -5,6 +5,9 @@ import stachugame.api.entities.IEntity;
 import stachugame.api.maps.Direction;
 import stachugame.implementation.entities.AbstractEntity;
 
+/**
+ * Klasa przeciwnika Druid
+ */
 public class Druid extends AbstractEntity implements IEnemy {
     private final int damage;
     public Druid(int maxHealth, int damage) {

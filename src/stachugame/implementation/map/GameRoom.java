@@ -8,6 +8,9 @@ import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
 import stachugame.api.maps.IRoomMap;
 
+/**
+ * Klasa przedstawiająca pokój w grze
+ */
 public class GameRoom implements IRoom {
 	private LinkedHashSet<IEntity> entities;
 	private LinkedHashSet<IItem> items;

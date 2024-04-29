@@ -4,6 +4,9 @@ import stachugame.api.entities.IEntity;
 import stachugame.api.items.IItem;
 import stachugame.implementation.entities.AbstractEntity;
 
+/**
+ * Klasa bazowa wszystkich przedmiotów
+ */
 public abstract class AbstractItem implements IItem {
 
 	protected String name;

@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.io.IOException;
 import java.io.OutputStream;
 
+
+/*
+ * Klasa odpowiadająca za wysyłanie informacji tekstowych do gry, zgodnie z Event Dispatcherem Swing'a
+ */
 public class JTextAreaOutputStream extends OutputStream {
 
     private final JTextArea area;

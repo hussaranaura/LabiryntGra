@@ -5,6 +5,10 @@ import stachugame.api.entities.IEntity;
 import java.awt.*;
 import java.util.Set;
 
+/**
+ * Interfejs IRoomMap, <br>
+ * Deklaruje funkcje klasy mapy
+ */
 public interface IRoomMap {
     /**
      *  funkcja ma przejść po wszystkich postaciach na mapie i uruchomić funkcję update

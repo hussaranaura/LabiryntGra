@@ -5,6 +5,9 @@ import stachugame.api.entities.IEntity;
 import stachugame.api.maps.IRoom;
 import stachugame.implementation.entities.AbstractEntity;
 
+/**
+ * Klasa gracza
+ */
 public class Player extends AbstractEntity implements ICanAttack {
 
 	private int damage = 10;

@@ -12,6 +12,9 @@ import stachugame.implementation.util.ImageCache;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Klasa odpowiedzialna za rysowanie życia
+ */
 public class HealthPanel extends JPanel {
     private final Image background;
     private final Image bar;

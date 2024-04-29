@@ -3,11 +3,14 @@ package stachugame.implementation.items.potions;
 import stachugame.api.entities.IEntity;
 import stachugame.implementation.items.AbstractItem;
 
+/**
+ * Przedmiot mikstury leczenia
+ */
 public class HealthPotion extends AbstractItem {
 
     private final int healthRegen;
     public HealthPotion(int healthRegen) {
-        super("Jabol Jabółkowy");
+        super("Jabol Jabółkowy " +((float) healthRegen/20)+"L");
         this.healthRegen = healthRegen;
     }
 

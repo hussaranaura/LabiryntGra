@@ -10,6 +10,9 @@ import stachugame.implementation.map.GameRoom;
 
 import java.util.Map;
 
+/**
+ * Klasa pomocnicza, służy do ładowania map z kodów
+ */
 public class MapLoaderUtil {
 
     private static String[] mapCodes = new String[]{

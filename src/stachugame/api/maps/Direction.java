@@ -2,6 +2,10 @@ package stachugame.api.maps;
 
 import java.text.Normalizer;
 
+/**
+ * Enum Direction<br>
+ * Przedstawia wszystkie kierunki geograficzne.
+ */
 public enum Direction {
     NORTH((byte) 0b0000_0001),
     SOUTH((byte) 0b0000_0100),
