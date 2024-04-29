@@ -209,7 +209,12 @@ public class Game implements IGame {
 				case "wschod":
 				case "zachod":
 					Direction dir = Direction.getDirByName(args[0]);
-					player.move(dir);
+					if(room.isNextRoomOpen(dir)) {
+						player.move(dir);
+					} else {
+						progressGameloopAfterCommand = false;
+						printOptions();
+					}
 
 					break;
 				case "wyjdz":
@@ -291,18 +296,29 @@ public class Game implements IGame {
 	}
 
 	private void printOptions() {
+		IRoom room = player.getCurrentRoom();
 		switch(state){
 			case EXPLORING:
 				out.println("   Możliwe działania:\n");
+
+				if(room.isNextRoomOpen(Direction.NORTH))
+					out.println(" POLNOC - ruch do góry");
+				if(room.isNextRoomOpen(Direction.SOUTH))
+					out.println(" POLUDNIE - ruch do dołu");
+				if(room.isNextRoomOpen(Direction.EAST))
+					out.println(" WSCHOD - ruch w prawo");
+				if(room.isNextRoomOpen(Direction.WEST))
+					out.println(" ZACHOD - ruch w lewo");
+
 				out.println(
-						" POMOC - lista możliwych działań\n" +
-								" POLNOC - ruch do góry\n" +
-								" WSCHOD - ruch w prawo\n" +
-								" POLUDNIE - ruch do dołu\n" +
-								" ZACHOD - ruch w lewo\n" +
-								" ROZGLAD - obejrzyj się po pokoju\n" +
-								" PRZEDMIOTY - zobacz swój ekwipunek\n" +
-								" UZYJ # - uzywa przedmiot\n"
+						"\n POMOC - lista możliwych działań"
+				);
+
+
+				out.println(
+						" ROZGLAD - obejrzyj się po pokoju\n" +
+						" PRZEDMIOTY - zobacz swój ekwipunek\n" +
+						" UZYJ # - uzywa przedmiot\n"
 				);
 				if(player.getCurrentRoom().isFinalRoom())
 					out.println(" WYJDZ - przejdz do nastepnego poziomu");
@@ -310,7 +326,6 @@ public class Game implements IGame {
 				break;
 			case FIGHTING:
 				int i = 1;
-				IRoom room = player.getCurrentRoom();
 				for(IEntity enemy : room.getEntities()){
 					if(enemy instanceof IEnemy){
 						out.println(String.format(" %d. %s", i, enemy.getName()));
