@@ -30,4 +30,9 @@ public class Druid extends AbstractEntity implements IEnemy {
     public void attack(IEntity entity) {
         entity.setHealth(entity.getHealth()-damage);
     }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
 }

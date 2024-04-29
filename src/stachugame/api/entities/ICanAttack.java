@@ -6,4 +6,10 @@ public interface ICanAttack {
      * @param entity postać do zaatakowania
      */
     void attack(IEntity entity);
+
+    /**
+     * Funkcja zwraca ilość obrażeń, ile przeciwnik zadaje
+     * @return ilość obrażeń
+     */
+    int getDamage();
 }

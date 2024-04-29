@@ -7,6 +7,8 @@ import stachugame.implementation.entities.AbstractEntity;
 
 public class Player extends AbstractEntity implements ICanAttack {
 
+	private int damage = 10;
+
 	public Player(String name, int maxHealth) {
 		super(name, maxHealth);
 	}
@@ -25,6 +27,11 @@ public class Player extends AbstractEntity implements ICanAttack {
 
 	@Override
 	public void attack(IEntity entity) {
-		entity.setHealth(entity.getHealth()-10);
+		entity.setHealth(entity.getHealth()-damage);
+	}
+
+	@Override
+	public int getDamage() {
+		return damage;
 	}
 }
