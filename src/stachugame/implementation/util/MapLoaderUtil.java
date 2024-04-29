@@ -3,6 +3,8 @@ package stachugame.implementation.util;
 import stachugame.api.maps.Direction;
 import stachugame.api.maps.IRoom;
 import stachugame.api.maps.IRoomMap;
+import stachugame.implementation.entities.enemy.Druid;
+import stachugame.implementation.items.potions.HealthPotion;
 import stachugame.implementation.map.GameMap;
 import stachugame.implementation.map.GameRoom;
 
@@ -46,8 +48,22 @@ public class MapLoaderUtil {
             int y = i%10;
             IRoom room = rooms[x][y];
 
+            if(x == startX && y == startY){
+                room.getItems().add(new HealthPotion(10));
+                room.getItems().add(new HealthPotion(15));
+                room.getItems().add(new HealthPotion(20));
+            }
+
             if(room == null)
                 continue;
+
+            if(Math.random() > 0.5){
+                if(Math.random() > 0.5){
+                    room.addEntity(new Druid(20, 5));
+                }else{
+                    room.getItems().add(new HealthPotion(10));
+                }
+            }
 
             Map<Direction, IRoom> exits = ((GameRoom) room).getExits();
             byte roomMask = Byte.parseByte(codes[2].substring(i, i+1), 16);
