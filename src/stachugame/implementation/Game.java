@@ -49,7 +49,7 @@ public class Game implements IGame {
 
 		if(map == null){
 
-			state = GameState.GAME_OVER;
+			state = GameState.GAME_WON;
 			out.println("\n\n\nKoniec gry!!!");
 			return;
 		}

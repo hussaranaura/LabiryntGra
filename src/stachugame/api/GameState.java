@@ -5,6 +5,7 @@ public enum GameState {
     INITIALIZING,
     EXPLORING,
     FIGHTING,
-    GAME_OVER;
+    GAME_OVER,
+    GAME_WON;
 
 }
